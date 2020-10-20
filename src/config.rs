@@ -7,6 +7,8 @@ pub struct Config {
     pub session_key: String,
     pub gh_client_id: String,
     pub gh_client_secret: String,
+    pub gitlab_client_id: String,
+    pub gitlab_client_secret: String,
     pub db_url: String,
     pub replica_db_url: Option<String>,
     pub env: Env,
@@ -40,6 +42,8 @@ impl Default for Config {
     /// - `SESSION_KEY`: The key used to sign and encrypt session cookies.
     /// - `GH_CLIENT_ID`: The client ID of the associated GitHub application.
     /// - `GH_CLIENT_SECRET`: The client secret of the associated GitHub application.
+    /// - `GITLAB_CLIENT_ID`: The client ID of the associated GitLab application.
+    /// - `GITLAB_CLIENT_SECRET`: The client secret of the associated GitLab application.
     /// - `DATABASE_URL`: The URL of the postgres database to use.
     /// - `READ_ONLY_REPLICA_URL`: The URL of an optional postgres read-only replica database.
     /// - `BLOCKED_TRAFFIC`: A list of headers and environment variables to use for blocking
@@ -131,6 +135,8 @@ impl Default for Config {
             session_key: env("SESSION_KEY"),
             gh_client_id: env("GH_CLIENT_ID"),
             gh_client_secret: env("GH_CLIENT_SECRET"),
+            gitlab_client_id: env("GITLAB_CLIENT_ID"),
+            gitlab_client_secret: env("GITLAB_CLIENT_SECRET"),
             db_url: env("DATABASE_URL"),
             replica_db_url: dotenv::var("READ_ONLY_REPLICA_URL").ok(),
             env: cargo_env,
